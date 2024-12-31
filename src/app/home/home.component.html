@@ -1,1 +1,17 @@
-<p>home works!</p>
+<div class="container mt-4">
+    <div *ngIf="isLoading" class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  
+    <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+      {{ errorMessage }}
+    </div>
+  
+    <div class="row">
+      <div class="col-md-4 col-sm-6 col-12 mb-4" *ngFor="let product of products">
+        <!-- Pass product data to the ProductComponent -->
+        <app-product [product]="product"></app-product>
+      </div>
+    </div>
+  </div>
+  

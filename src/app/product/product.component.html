@@ -1,46 +1,19 @@
-<!-- <div class="row">
-    <div class="col-8">
-        <div class="card">
-            <div class="card-header bg-primary">
-                <div class="row">
-                    <div class="col-6">
-                        Product List
-                    </div>
-                    <div class="col-6">
-                        <button class="btn btn-sm btn-outline-success"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-
-            </div>
-        </div>
+<div class="card rounded border-dark">
+    <img [src]="product.image" class="card-img-top" alt="{{ product.title }}" />
+    <div class="card-body">
+      <h5 class="card-title">{{ product.title }}</h5>
+      <p class="card-text mb-0" [class.expanded]="isDescriptionExpanded">{{ isDescriptionExpanded ? product.description : truncatedDescription }}</p>
+      <button *ngIf="product.description?.length > 50" (click)="toggleDescription()" class="btn btn-link">
+        {{ isDescriptionExpanded ? 'Read Less' : 'Read More' }}
+      </button>
+      <p class="card-text mt-2">
+        <strong>Rating: </strong>{{ product.rating.rate }} / 5
+      </p>
+      <p class="card-text">
+        <strong>Reviews: </strong>{{ product.rating.count }} reviews
+      </p>
+      <p class="card-text"><strong>${{ product.price }}</strong></p>
+      <a [href]="product.url" class="btn btn-primary" target="_blank">View Product</a>
     </div>
-
-    <div class="col-4">
-        <div class="card">
-            <div class="card-header bg-primary">
-                <div class="row">
-                    <div class="col-6">
-                        New Product
-                    </div>
-                    <div class="col-6">
-                        <button class="btn btn-sm btn-outline-success">New</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-6">
-                        <label for="">SKU</label>
-                        <input type="text" name="" id="" [([(ngModel)]="productObj.productSku")] class="form-control">
-                    </div>
-                    <div class="col-6">
-                        <label for="">Price</label>
-                        <input type="text" name="" id="" [([(ngModel)]="productObj.productSku")] class="form-control">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
+  </div>
+  
