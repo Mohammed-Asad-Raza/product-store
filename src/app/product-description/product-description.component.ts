@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../shared/interface/product.interface';
 import { CommonModule } from '@angular/common';
 
@@ -10,12 +10,13 @@ import { CommonModule } from '@angular/common';
   styleUrl: './product-description.component.scss'
 })
 export class ProductDescriptionComponent {
-  @Input() product!: Product;
+  @Input() product: Product | null = null;
   @Input() showModal: boolean = false;
+  @Output() closeModal = new EventEmitter<void>();
 
   // Method to close product description modal
 
-  closeModal(): void {
-    this.showModal = false;
+  close(): void {
+    this.closeModal.emit(); // Notify parent to close the modal
   }
 }

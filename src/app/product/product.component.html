@@ -13,12 +13,6 @@
         <strong>Reviews: </strong>{{ product.rating.count }} reviews
       </p>
       <p class="card-text"><strong>${{ product.price }}</strong></p>
-      <a (click)="openModal(product)" class="btn btn-primary" target="_blank">View Product</a>
+      <a (click)="openModal(product)" class="btn btn-primary">View Product</a>
     </div>
   </div>
-  
-  <app-product-description
-  [product]="selectedProduct"
-  [showModal]="showModal"
-  (closeModal)="showModal = false"
-></app-product-description>

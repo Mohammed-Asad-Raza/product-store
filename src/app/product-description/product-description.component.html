@@ -1,16 +1,16 @@
-<div class="modal-backdrop" *ngIf="showModal" (click)="closeModal()"></div>
+<div class="modal-backdrop" *ngIf="showModal" (click)="close()"></div>
 <div class="modal-container" *ngIf="showModal">
   <div class="modal-content">
-    <button class="btn-close" (click)="closeModal()">&times;</button>
+    <button class="btn-close" (click)="close()">&times;</button>
     <div class="modal-header">
-      <h5>{{ product.title }}</h5>
+      <h5>{{ product?.title }}</h5>
     </div>
     <div class="modal-body">
-      <img [src]="product.image" class="img-fluid" alt="{{ product.title }}" />
-      <p><strong>Price:</strong> ${{ product.price }}</p>
-      <p><strong>Category:</strong> {{ product.category }}</p>
-      <p><strong>Rating:</strong> {{ product.rating.rate }} / 5 ({{ product.rating.count }} reviews)</p>
-      <p><strong>Description:</strong> {{ product.description }}</p>
+      <img [src]="product?.image" class="img-fluid" alt="{{ product?.title }}" />
+      <p><strong>Price:</strong> ${{ product?.price }}</p>
+      <p><strong>Category:</strong> {{ product?.category }}</p>
+      <p><strong>Rating:</strong> {{ product?.rating?.rate }} / 5 ({{ product?.rating?.count }} reviews)</p>
+      <p><strong>Description:</strong> {{ product?.description }}</p>
     </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../shared/interface/product.interface';
 import { ProductDescriptionComponent } from '../product-description/product-description.component';
@@ -13,7 +13,8 @@ import { ProductDescriptionComponent } from '../product-description/product-desc
 })
 export class ProductComponent {
   @Input() product: any;
-
+  @Output() productSelected = new EventEmitter<Product>();
+  
   isDescriptionExpanded = false;
   selectedProduct!: Product;
   showModal: boolean = false;
@@ -35,7 +36,6 @@ export class ProductComponent {
   // Product description modal
 
   openModal(product: Product): void {
-    this.selectedProduct = product;
-    this.showModal = true;
+    this.productSelected.emit(product);
   }
 }

@@ -15,7 +15,13 @@
   
     <div class="row">
       <div class="col-md-4 col-sm-6 col-12 mb-4" *ngFor="let product of filteredProducts | filter: searchTerm">
-        <app-product [product]="product"></app-product>
+        <app-product [product]="product" (productSelected)="handleProductSelected($event)"></app-product>
       </div>
     </div>
   </div>
+
+  <app-product-description
+  [product]="selectedProduct"
+  [showModal]="showModal"
+  (closeModal)="closeModal()"
+></app-product-description>

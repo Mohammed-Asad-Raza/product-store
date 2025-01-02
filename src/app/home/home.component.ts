@@ -6,11 +6,12 @@ import { ProductComponent } from '../product/product.component';
 import { Product } from '../shared/interface/product.interface';
 import { SearchComponent } from '../shared/search/search.component';
 import { FilterPipe } from '../pipes/filter.pipe';
+import { ProductDescriptionComponent } from '../product-description/product-description.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule, ProductComponent, SearchComponent, FilterPipe],
+  imports: [CommonModule, FormsModule, ProductComponent, SearchComponent, FilterPipe, ProductDescriptionComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -21,6 +22,8 @@ export class HomeComponent implements OnInit {
   isLoading = true;
   errorMessage: string = '';
   searchTerm: any;
+  selectedProduct!: Product;
+  showModal: boolean = false;
 
   constructor(private productService: ProductService) {
 
@@ -63,5 +66,21 @@ export class HomeComponent implements OnInit {
     this.filteredProducts = this.products.filter(product =>
       product.title.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
+  }
+
+
+  handleProductSelected(product: Product): void {
+    // Reset modal state and reopen
+    this.selectedProduct = product;
+    this.showModal = false;
+
+    setTimeout(() => {
+      this.selectedProduct = product;
+      this.showModal = true;
+    });
+  }
+
+  closeModal(): void {
+    this.showModal = false;
   }
 }
